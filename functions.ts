@@ -1,6 +1,6 @@
 import * as XLSX from "https://cdn.sheetjs.com/xlsx-0.18.12/package/xlsx.mjs";
 import { yellow } from "https://deno.land/std@0.158.0/fmt/colors.ts";
-import zip from "./zipcodes.json" assert { type: "json" };
+import zip from "./assets/zipcodes.json" assert { type: "json" };
 export function parseData(input: any[], name: string) {
   const data = input
     .map((item) => {
