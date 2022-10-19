@@ -6,10 +6,14 @@ try {
   for await (const dirEntry of Deno.readDir("./input")) {
     if (/.*.json/g.test(dirEntry.name)) {
       console.log(mod.yellow(`Reading file ${dirEntry.name}`));
-      const json: any[] = JSON.parse(
-        Deno.readTextFileSync(`./input/${dirEntry.name}`)
-      );
-      parseData(json, dirEntry.name.replace(/.json/g, ""));
+      try {
+        const json: any[] = JSON.parse(
+          Deno.readTextFileSync(`./input/${dirEntry.name}`)
+        );
+        parseData(json, dirEntry.name.replace(/.json/g, ""));
+      } catch (er) {
+        console.error(er);
+      }
     }
   }
   do {
